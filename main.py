@@ -1,5 +1,6 @@
 import tweepy
 import auth
+import re
 
 #create a class inherithing from the tweepy  StreamListener
 class BotStreamer(tweepy.StreamListener):
@@ -10,8 +11,13 @@ class BotStreamer(tweepy.StreamListener):
         status_id = status.id
 
     def on_status(self, status):
-        print ("This is the retweet")
-        auth.api.update_status('@' + status.author.screen_name + ' ' + 'This is the reply', status.id)
+
+        # Accept event information with #postuofuevent
+        content = status.text
+        if (bool(re.search("#posteventuofu", content))):
+            auth.api.update_status('@' + status.author.screen_name + ' ' + 'Event posting request accepted', status.id)
+        if(bool(re.search("#geteventuofu", content))):
+            auth.api.update_status('@' + status.author.screen_name + ' ' + 'Information about event: ', status.id)
 
 
 myStreamListener = BotStreamer()
