@@ -56,9 +56,9 @@ def is_there_something_to_post_today():
     #
     for x in listofevents:
         if today_date == x.eventDate:
-            event_list_today.append(listofevents.index(x))
+            event_list_today.append(x)
         if next_week_date == x.eventDate:
-            event_list_today.append(listofevents.index(x))
+            event_list_today.append(x)
     #return event_list_today, event_list_within_the_week
 
 

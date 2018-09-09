@@ -42,5 +42,7 @@ database.create_event("NAME", "September 9", "DESCRIPTION", "WEBADRESS", "CATEGO
 
 
 database.is_there_something_to_post_today()
-print(database.event_list_today)
+for x in database.event_list_today:
+    print(x.eventName)
+#print(database.event_list_today)
 #print(database.dateLookup("September 9"))
