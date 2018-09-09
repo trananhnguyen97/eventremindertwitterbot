@@ -85,8 +85,8 @@ create_event("Sports Workshop", "September 16", "DESCRIPTION", "WEBADRESS", "CAT
 create_event("Free Food", "September 9", "Come get free food", "WEBADRESS", "CATEGORY", "FOOD YES")
 
 
-write_to_file()
-# read_from_file()
+#write_to_file()
+read_from_file()
 
 # if search_for_duplicate("NAME"):
 #     print("There was a duplicate")
@@ -94,3 +94,4 @@ write_to_file()
 
 # for x in catLookup("CATEGORY"):
 #     print(x.eventCategory)
+is_there_something_to_post_today()
