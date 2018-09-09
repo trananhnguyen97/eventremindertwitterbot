@@ -1,3 +1,5 @@
-Football Training, September 9, DESCRIPTION, WEBADRESS, CATEGORY, FOOD YES
-Sports Workshop, September 16, DESCRIPTION, WEBADRESS, CATEGORY, FOOD NO
-Free Food, September 9, Come get free food, WEBADRESS, CATEGORY, FOOD YES
+AcademicEvent, September 9, DESCRIPTION, WEBADRESS, academic, FOOD YES
+HackTheU, September 9, DESCRIPTION, WEBADRESS, academic, FOOD YES
+AthleticEvent, September 9, DESCRIPTION, WEBADRESS, athletic, FOOD YES
+Hobby, September 9, DESCRIPTION, WEBADRESS, hobby, FOOD YES
+Other, September 9, DESCRIPTION, WEBADRESS, other, FOOD YES
