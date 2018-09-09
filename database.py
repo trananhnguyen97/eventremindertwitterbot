@@ -14,4 +14,5 @@ def search_for_duplicate(name):
         else:
             return True
 
-def
+def is_there_something_to_post_today():
+    return True
