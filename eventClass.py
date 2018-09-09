@@ -1,6 +1,8 @@
 class Event:
-    def __init__(self, eventName, eventDate, eventDesc, eventCategory):
+    def __init__(self, eventName, eventDate, eventDesc, eventWeb, eventCategory, eventFood):
         self.eventName = eventName
         self.eventDate = eventDate
-        self.eventDest = eventDesc
+        self.eventDesc = eventDesc
+        self.eventWeb = eventWeb
         self.eventCategory = eventCategory
+        self.eventFood = eventFood
