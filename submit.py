@@ -31,18 +31,15 @@ def postTweet(event):
     api1.update_status(tweetText)
 
 
-#postTweet(addEvent())
+postTweet(addEvent())
 
-database.create_event("NOTNAME", "September 9", "DESCRIPTION", "WEBADRESS", "CATEGORY", "FOOD YES")
-database.create_event("NAME", "September 9", "DESCRIPTION", "WEBADRESS", "CATEGORY", "FOOD YES")
-
+# database.create_event("NOTNAME", "September 9", "DESCRIPTION", "WEBADRESS", "CATEGORY", "FOOD YES")
+# database.create_event("NAME", "September 9", "DESCRIPTION", "WEBADRESS", "CATEGORY", "FOOD YES")
 
 # if database.search_for_duplicate("NAME"):
 #     print("THERE IS A DUPLICATE")
 
+# database.is_there_something_to_post_today()
+# for x in database.event_list_today:
+#     print(x.eventName)
 
-database.is_there_something_to_post_today()
-for x in database.event_list_today:
-    print(x.eventName)
-#print(database.event_list_today)
-#print(database.dateLookup("September 9"))
