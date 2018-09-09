@@ -24,28 +24,28 @@ def search_for_duplicate(name):
 #             listofevents.remove(x)
 
 
-def name_Lookup(name):
+def nameLookup(name):
     return_list = []
     for x in listofevents:
-        if name == listofevents.index(x).eventName:
-            return_list.append(listofevents.index(x))
+        if name == x.eventName:
+            return_list.append(x)
     return return_list
 
 #
-# def dateLookup(date):
-#     return_list = []
-#     for x in listofevents:
-#         if date == listofevents.index(x).eventDate:
-#             return_list.append(listofevents.index(x))
-#     return return_list
-#
-#
-# def catLookup(category):
-#     return_list = []
-#     for x in listofevents:
-#         if category == listofevents.index(x).eventCategory:
-#             return_list.append(listofevents.index(x))
-#     return return_list
+def dateLookup(date):
+    return_list = []
+    for x in listofevents:
+        if date == x.eventDate:
+            return_list.append(x)
+    return return_list
+
+
+def catLookup(category):
+    return_list = []
+    for x in listofevents:
+        if category == x.eventCategory:
+            return_list.append(x)
+    return return_list
 
 
 def is_there_something_to_post_today():
@@ -83,7 +83,11 @@ def write_to_file():
 create_event("NAME", "September 9", "DESCRIPTION", "WEBADRESS", "CATEGORY", "FOOD YES")
 create_event("NAME", "September 9", "DESCRIPTION", "WEBADRESS", "CATEGORY", "FOOD YES")
 # write_to_file()
-read_from_file()
+# read_from_file()
 
-if search_for_duplicate("NAME"):
-    print("There was a duplicate")
+# if search_for_duplicate("NAME"):
+#     print("There was a duplicate")
+
+
+for x in catLookup("CATEGORY"):
+    print(x.eventCategory)
