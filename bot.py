@@ -1,15 +1,21 @@
 import tweepy
-from auth import *
+import auth
 
-#create an OAuthHandler instance
-# Twitter requires all requests to use OAuth for authentication
-auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+#create a class inherithing from the tweepy  StreamListener
+class BotStreamer(tweepy.StreamListener):
 
-auth.set_access_token(access_token, access_secret)
+    # Called when a new status arrives which is passed down from the on_data method of the StreamListener
+    def on_status(self, status):
+        username = status.user.screen_name
+        status_id = status.id
 
- #Construct the API instance
-api = tweepy.API(auth) # create an API object
+    def on_status(self, status):
+        print ("This is the retweet")
+        auth.api.update_status('@' + status.author.screen_name + ' '+'My status update', status.id)
 
-public_tweets = api.home_timeline()
-for tweet in public_tweets:
-    print(tweet.text)
+
+myStreamListener = BotStreamer()
+
+#Construct the Stream instance
+stream = tweepy.Stream(auth.auth, myStreamListener)
+stream.filter(track=['@uofuevent'])
