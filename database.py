@@ -80,14 +80,17 @@ def write_to_file():
    f.close()
 
 
-create_event("NAME", "September 9", "DESCRIPTION", "WEBADRESS", "CATEGORY", "FOOD YES")
-create_event("NAME", "September 9", "DESCRIPTION", "WEBADRESS", "CATEGORY", "FOOD YES")
-# write_to_file()
+create_event("Football Training", "September 9", "DESCRIPTION", "WEBADRESS", "CATEGORY", "FOOD YES")
+create_event("Sports Workshop", "September 16", "DESCRIPTION", "WEBADRESS", "CATEGORY", "FOOD NO")
+create_event("Free Food", "September 9", "Come get free food", "WEBADRESS", "CATEGORY", "FOOD YES")
+
+
+write_to_file()
 # read_from_file()
 
 # if search_for_duplicate("NAME"):
 #     print("There was a duplicate")
 
 
-for x in catLookup("CATEGORY"):
-    print(x.eventCategory)
+# for x in catLookup("CATEGORY"):
+#     print(x.eventCategory)
