@@ -1,6 +1,7 @@
 import eventClass
 import tweepy
 import auth
+import database
 
 api1 = tweepy.API(auth.auth)
 #print(api1.direct_messages(count=100)[0].text)
@@ -24,8 +25,22 @@ def addEvent():
             print(newEvent.eventName)
             return newEvent
 
+
 def postTweet(event):
     tweetText = "Hey everyone, " + event.eventName + " is an upcoming event on " + event.eventDate + ". Here's the description: " + event.eventDesc + ", and here is the event's website: " + event.eventWeb + " Food status: " + event.eventFood + " #" + event.eventCategory + "Event"
     api1.update_status(tweetText)
 
-postTweet(addEvent())
+
+#postTweet(addEvent())
+
+database.create_event("NOTNAME", "September 9", "DESCRIPTION", "WEBADRESS", "CATEGORY", "FOOD YES")
+database.create_event("NAME", "September 9", "DESCRIPTION", "WEBADRESS", "CATEGORY", "FOOD YES")
+
+
+# if database.search_for_duplicate("NAME"):
+#     print("THERE IS A DUPLICATE")
+
+
+database.is_there_something_to_post_today()
+print(database.event_list_today)
+#print(database.dateLookup("September 9"))
