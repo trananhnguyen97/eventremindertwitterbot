@@ -44,6 +44,7 @@ def is_there_something_to_post_today():
     todays_date = list_months.index(now.month)+ " " + now.day
     day_var = now.day + 7
     next_week_date = list_months.index(now.month)+ " " + now.day
+    #
     for x in listofevents:
         if var == listofevents.index(x).eventDate:
             event_list_today.append(listofevents.index(x))
