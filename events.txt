@@ -1,0 +1,5 @@
+AcademicEvent, September 9, DESCRIPTION, WEBADRESS, academic, FOOD YES
+HackTheU, September 9, DESCRIPTION, WEBADRESS, academic, FOOD YES
+AthleticEvent, September 9, DESCRIPTION, WEBADRESS, athletic, FOOD YES
+Hobby, September 9, DESCRIPTION, WEBADRESS, hobby, FOOD YES
+Other, September 9, DESCRIPTION, WEBADRESS, other, FOOD YES
