@@ -4,20 +4,32 @@ import auth
 import database
 
 api1 = tweepy.API(auth.auth)
-#print(api1.direct_messages(count=100)[0].text)
+#print(api1.direct_messages(count=100)[0].text)x
 #print(api1.direct_messages(count=100, since_id=0)[1].text)
 numDM = len(api1.direct_messages())
-print("Number of DMs: ", numDM)
+#print("Number of DMs: ", numDM)
 
 ###print(api1.direct_messages(count=200)[i].sender_screen_name)
 
 def checkDM():
-    for i in range (database.lastID, numDM):
-        author=api1.direct_messages(count=200)[i].sender_screen_name
-        print(api1.direct_messages(count=200)[i].text)
-        dm=api1.direct_messages(count=200)[i].text
-        print ("Current DM: ", dm)
+    for i in range (0, numDM):
+        print("i is: ", i, "numDM is: ", numDM)
         tweetID=api1.direct_messages(count=200)[i].id
+        author=api1.direct_messages(count=200)[i].sender_screen_name
+        #print(i)
+        text = "Formatting error, please try again"
+        #print(api1.direct_messages(count=200)[i].text)
+        dm=api1.direct_messages(count=200)[i].text
+        with open('profanityList.txt') as f:
+            for line in f:
+                dm=dm.lower()
+                if dm.find(line)!=-1:
+                    text1 = "Your message does not pass the profanity filter"
+                    api1.send_direct_message(screen_name=author, text=text1)
+                    api1.destroy_direct_message(tweetID)
+                    return False
+        dm = api1.direct_messages(count=200)[i].text
+        print (dm.find("EVENT: "))
         if (dm.find("EVENT: ")==0):
             postTweet(addEvent(i))
             api1.destroy_direct_message(tweetID)
@@ -25,12 +37,14 @@ def checkDM():
             info(i)
             api1.destroy_direct_message(tweetID)
         else:
-            text = "Try again"
-            api1.send_direct_message(screen_name=author,text=text)
+            api1.send_direct_message(screen_name=author,text="1")
             api1.destroy_direct_message(tweetID)
 
 def info(x=0):
     dm=api1.direct_messages(count=200)[x].text
+    tweetID=api1.direct_messages(count=200)[x].id
+    author=api1.direct_messages(count=200)[x].sender_screen_name
+    text = "Formatting error, please try again"
     if not (dm.find("INFO: ")==-1):
         if not (dm.find("NAME: ")==-1):
             nameStr = dm.find("NAME: ")
@@ -46,12 +60,16 @@ def info(x=0):
             catStr = dm.find("CAT: ")
             database.catLookup(dm[catStr+len("CAT: "):])
         else:
+            api1.send_direct_message(screen_name=author,text=text)
             return False
 
 
 
 def addEvent(x=0):
     dm=api1.direct_messages(count=200)[x].text
+    tweetID = api1.direct_messages(count=200)[x].id
+    author = api1.direct_messages(count=200)[x].sender_screen_name
+    text = "Formatting error, please try again"
     print(dm)
     if not (dm.find("EVENT: ")==-1 or dm.find("DATE: ")==-1 or dm.find("DESC: ")==-1 or dm.find("WEB: ")==-1 or dm.find("CATE: ")==-1 or dm.find("FOOD: ")==-1):
         eventStr = dm.find("EVENT: ")
@@ -65,7 +83,7 @@ def addEvent(x=0):
         #print(newEvent.eventName)
         return newEvent
     else:
-        api1.send_direct_message(api1.direct_messages(count=200)[x].sender_screen_name, "Please reformat your request")
+        api1.send_direct_message(screen_name=author, text=text)
         #destroy dm
         return False
 
